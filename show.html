@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>参赛人员信息展示</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>搜索:</td>
+        <td><input type="text" name="card" placeholder="请输入搜索姓名"></td>
+        <td><input type="button" value="搜索" ></td>
+    </tr>
+    <tr>
+        <td>ID</td>
+        <td>证件号</td>
+        <td>姓名</td>
+        <td>电话号</td>
+        <td>邮箱</td>
+        <td>审核状态</td>
+        <td>审核</td>
+    </tr>
+    {volist name="list" id="vo"}
+    <tr>
+        <td>{$vo.can_id}</td>
+        <td>{$vo.can_zheng}</td>
+        <td>{$vo.can_name}</td>
+        <td>{$vo.can_phone}</td>
+        <td>{$vo.can_email}</td>
+        <td><a href="{:url('Zhoukao3/upd')}?can_id={$vo.can_id}">{$vo.can_isshow}</a></td>
+        <td>{$vo.can_isshow}</td>
+    </tr>
+    {/volist}
+</table>
+</body>
+</html>

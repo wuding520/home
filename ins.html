@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>马拉松参赛报名处</title>
+</head>
+<body>
+<center>
+    <h1><font color="black">2019八维马拉松</font></h1>
+    <form action="{:url('Zhoukao3/index')}" method="post">
+        <table border="1">
+            <tr>
+                <td>证件号：</td>
+                <td><input type="text" name="can_zheng" placeholder="请输入证件号" onblur="ding_zheng()"><span id="s1"></span></td>
+            </tr>
+            <tr>
+                <td>姓名：</td>
+                <td><input type="text" name="can_name" placeholder="请输入姓名"></td>
+            </tr>
+            <tr>
+                <td>电话：</td>
+                <td><input type="text" name="can_phone" placeholder="请输入手机号" onblur="ding_phone()"><span id="s2"></span></td>
+            </tr>
+            <tr>
+                <td>邮箱：</td>
+                <td><input type="text" name="can_email" placeholder="请输入邮箱" onblur="ding_email()"><span id="s3"></span></td>
+            </tr>
+            <tr>
+                <td>半/全程：</td>
+                <td><input type="radio" name="can_isshow" value="全程" checked="checked">全程<input type="radio" name="can_isshow" value="半程">半程</td>
+            </tr>
+            <tr>
+                <td>参赛时间：</td>
+                <td><input type="text" name="can_time" value="2019年2月21日" placeholder="请输入参赛时间"></td>
+            </tr>
+            <tr>
+                <td><input type="reset" value="重置"></td>
+                <td><input type="submit" value="确定报名"></td>
+            </tr>
+        </table>
+    </form>
+</center>
+</body>
+<script type="text/javascript">
+    function ding_zheng() {
+        var aa = document.getElementsByName("can_zheng")[0].value;
+        var bb =/^\d{18}|\d{17}x$/i;
+        if ( aa == ""){
+            document.getElementById("s1").innerHTML="<font color='red'>证件号不能为空</font>";
+            return false;
+        }else if (!bb.test(aa)){
+            document.getElementById("s1").innerHTML="<font color='red'>证件号不能少于18位</font>";
+            return false;
+        } else {
+            document.getElementById("s1").innerHTML="<font color='blue'>√</font>";
+            return true;
+        }
+    }
+    function ding_phone() {
+        var a1 = document.getElementsByName("can_phone")[0].value;
+        var b1 = /^1[3,5,8,9]\d{9}$/;
+        if ( a1 == ""){
+            document.getElementById("s2").innerHTML="<font color='red'>手机号不能为空</font>";
+            return false;
+        }else if (!b1.test(a1)){
+            document.getElementById("s2").innerHTML="<font color='red'>手机号不能少于11位，必须是13,15,18,19开头</font>";
+            return false;
+        } else {
+            document.getElementById("s2").innerHTML="<font color='blue'>√</font>";
+            return true;
+        }
+    }
+    function ding_email() {
+        var a2 = document.getElementsByName("can_email")[0].value;
+        var b2 = /^\d{5,}@qq(\.)com$/;
+        if ( a2 == ""){
+            document.getElementById("s3").innerHTML="<font color='red'>邮箱不能为空</font>";
+            return false;
+        }else if (!b2.test(a2)){
+            document.getElementById("s3").innerHTML="<font color='red'>必须按照邮箱格式：例如971317345@qq.com</font>";
+            return false;
+        } else {
+            document.getElementById("s3").innerHTML="<font color='blue'>√</font>";
+            return true;
+        }
+    }
+</script>
+</html>
